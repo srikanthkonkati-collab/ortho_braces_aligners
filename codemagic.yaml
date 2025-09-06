@@ -1,19 +1,12 @@
 workflows:
-  default-workflow:
-    name: Build Braces & Aligners APK
+  build-android:
+    name: Build Android APK
     environment:
       flutter: stable
     scripts:
-      - name: Ensure native folders
-        script: |
-          flutter create --org com.srikanth --project-name braces_aligners_app . || true
       - name: Get dependencies
-        script: |
-          flutter pub get
+        script: flutter pub get
       - name: Build APK
-        script: |
-          flutter build apk --release
+        script: flutter build apk --release
     artifacts:
-      - build/app/outputs/flutter-apk/*.apk
-    triggers:
-      - push
+      - build/app/outputs/flutter-apk/app-release.apk
